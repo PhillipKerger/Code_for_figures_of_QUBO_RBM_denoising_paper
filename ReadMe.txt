@@ -1,4 +1,4 @@
-This folder contains 4 separate folders of code relating to the QUBO image denoising method for RBMs.
+This folder contains folders of code relating to the QUBO image denoising method for RBMs.
 This method is described and analyzed in detail in publication by Phillip Kerger and Ryoji Miyazaki titled
 something like "image denoising via QUBO with Boltzmann Machines and Quantum Annealing". 
 
