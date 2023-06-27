@@ -1,0 +1,25 @@
+'evaluate_full_performance...' compares the QUBO method versus some other denoising methods on binary 
+images. 
+
+For the QUBO denoising, the rho_penalty_image_restore function from the included kergerqubo module is used. 
+This uses the D-Wave neal library's simulated annealing function. To implement with quantum annealing, 
+this needs to be modified. Specifically, rho_penalty_image_restore uses another function in kergerqubo, 
+named neal_sample_visibles, which is where the neal.SimulatedAnnealingSampler is used (line 129 of kergerqubo).
+This is where the quantum annealing may be used instead, and the remainder of the code may stay untouched. 
+
+
+The 'compare_different_sigma_rho_choices_bas.py' python file compares the QUBO method against itself with 
+different choices of rho, via different choices of sigma to calculate rho. 
+The following choices of sigma (relative to the true sigma noise level) are used: 
+[1.25*sigma, 1*sigma, 0.75*sigma, 0.5*sigma]. 
+The choice of 1*sigma means the we use the true sigma for the denoising. 
+This is to test the suggested robustness modification.
+
+It uses the same RBM and produces a similar figure, and also sasves all of the produced data, 
+but in the 'data_from_full_eval_BAS_comparisons' folder within this folder. 
+The implementation uses D-wave's SimulatedAnnealing sampler from the neal module, so that this can be 
+tested using this heuristic on a conventional computer. To use the QA instead, the functions within 
+kergerqubo need only to be modified to use QA in place of the SA.
+
+make_BAS_data makes the 12x12 bars-and-stripes images.
+make_BAS_rbm creates trains an rbm to be used for the QUBO and Gibbbs denoising. 
