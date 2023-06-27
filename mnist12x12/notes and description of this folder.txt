@@ -1,0 +1,19 @@
+'evaluate_full_performance...' compares the QUBO method versus some other denoising methods on binary 
+images. 
+The 'compare_different_sigma_rho_choices_mnist12.py' python file compares the QUBO method against itself with 
+different choices of rho, via different choices of sigma to calculate rho. 
+The following choices of sigma (relative to the true sigma noise level) are used: 
+[1.25*sigma, 1*sigma, 0.75*sigma, 0.5*sigma]. 
+The choice of 1*sigma means the we use the true sigma for the denoising. 
+This is to test the suggested robustness modification.
+
+It uses the same RBM and produces a similar figure, and also sasves all of the produced data, 
+but in the 'data_from_full_eval_mnist12_comparisons' folder within this folder. 
+The implementation uses D-wave's SimulatedAnnealing sampler from the neal module, so that this can be 
+tested using this heuristic on a conventional computer. To use the QA instead, the functions within 
+kergerqubo need only to be modified to use QA in place of the SA.
+
+make_12x12_MNIST makes the 12x12 MNIST images from the original MNIST data (not included here due
+to storage capacities, just import it from the website.) It must be run before anything else in this folder, 
+since it creates the training and test datasets.
+make_mnist_rbm creates trains an rbm to be used for the QUBO and Gibbbs denoising. 
