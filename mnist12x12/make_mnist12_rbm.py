@@ -38,11 +38,7 @@ mnist12_train_labels = np.load('mnist12x12_trainlabels.npy') #I don't need the l
 # #############################################################################
 #%% Training
 
-#can go up to 160 hidden units with pegasus. Hopefully can do less though
-n_components = 64
-learning_rate = 0.01
-batch_size = 50
-n_iter = 200
+#can go up to around 160 hidden units with pegasus for 144 visibles
 
 n_components = 64
 learning_rate = 0.01
